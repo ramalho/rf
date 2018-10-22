@@ -18,7 +18,7 @@ func TestContains(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			got := Contains(tc.list, tc.item)
+			got := contains(tc.list, tc.item)
 			if got != tc.want {
 				t.Errorf("got %v; want %v", got, tc.want)
 			}
@@ -45,7 +45,7 @@ func TestContainsAll(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			got := ContainsAll(tc.list, tc.items...)
+			got := containsAll(tc.list, tc.items...)
 			if got != tc.want {
 				t.Errorf("got %v; want %v", got, tc.want)
 			}
