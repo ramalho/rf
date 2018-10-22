@@ -4,6 +4,19 @@ import (
 	"os"
 )
 
+func Example_find() {
+	find("sign", "registered")
+	// Output:
+	// U+00AE	®	REGISTERED SIGN
+}
+
+func Example_find_two_results() {
+	find("dingbat", "zero")
+	// Output:
+	// U+1F10B	🄋	DINGBAT CIRCLED SANS-SERIF DIGIT ZERO
+	// U+1F10C	🄌	DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ZERO
+}
+
 func Example() {
 	oldArgs := os.Args
 	defer func() { os.Args = oldArgs }()
@@ -25,23 +38,4 @@ func Example_no_args() {
 	main()
 	// Output:
 	// Please provide one or more words to find.
-}
-func ExampleFindOne() {
-	find("sign", "registered")
-	// Output:
-	// U+00AE	®	REGISTERED SIGN
-}
-
-func ExampleFindTwo() {
-	find("dingbat", "zero")
-	// Output:
-	// U+1F10B	🄋	DINGBAT CIRCLED SANS-SERIF DIGIT ZERO
-	// U+1F10C	🄌	DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ZERO
-}
-
-func FutureExampleFindHyphenated() {
-	find("plus", "minus")
-	// Output:
-	// U+00B1	±	PLUS-MINUS SIGN (PLUS-OR-MINUS SIGN)
-	// U+2213	∓	MINUS-OR-PLUS SIGN
 }
