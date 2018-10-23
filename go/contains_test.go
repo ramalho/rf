@@ -42,6 +42,8 @@ func TestContainsAll(t *testing.T) {
 		{[]string{"A"}, []string{"B", "A"}, false, "2 items, A not found"},
 		{[]string{"A", "B"}, []string{"B", "A"}, true, "2 items, found"},
 		{[]string{"A", "B", "C"}, []string{"B", "A"}, true, "2 items, found with extra"},
+		{[]string{}, []string{}, true, "0 item, empty list"},
+		{[]string{"A"}, []string{}, true, "0 item, any list"},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
