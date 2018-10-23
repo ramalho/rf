@@ -8,6 +8,7 @@ func Example_find() {
 	find("sign", "registered")
 	// Output:
 	// U+00AE	®	REGISTERED SIGN
+	// (1 found)
 }
 
 func Example_find_two_results() {
@@ -15,6 +16,7 @@ func Example_find_two_results() {
 	// Output:
 	// U+1F10B	🄋	DINGBAT CIRCLED SANS-SERIF DIGIT ZERO
 	// U+1F10C	🄌	DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ZERO
+	// (2 found)
 }
 
 func Example() {
@@ -29,6 +31,7 @@ func Example() {
 	// U+2714	✔	HEAVY CHECK MARK
 	// U+10102	𐄂	AEGEAN CHECK MARK
 	// U+1F5F8	🗸	LIGHT CHECK MARK
+	// (6 found)
 }
 
 func Example_no_args() {
@@ -37,5 +40,5 @@ func Example_no_args() {
 	os.Args = []string{"<executable-name>"}
 	main()
 	// Output:
-	// Please provide one or more words to find.
+	// Please provide words to find.
 }
