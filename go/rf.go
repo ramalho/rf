@@ -16,6 +16,9 @@ func find(words ...string) {
 	}
 	for char := ' '; char <= unicode.MaxRune; char++ {
 		name := runenames.Name(char)
+		if len(name) == 0 {
+			continue
+		}
 		if containsAll(strings.Fields(name), query...) {
 			fmt.Printf("%U\t%c\t%v\n", char, char, name)
 		}
