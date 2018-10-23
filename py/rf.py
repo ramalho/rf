@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-import unicodedata
 import sys
+import unicodedata
 
 
 def find(*words):
     query = {w.upper() for w in words}
     for code in range(32, sys.maxunicode + 1):
         char = chr(code)
-        try:
-            name = unicodedata.name(char)
-        except ValueError:  # no such name
+        name = unicodedata.name(char, "")
+        if not name:
             continue
         if query <= set(name.split()):
             print(f"U+{ord(char):04X}\t{char}\t{name}")
