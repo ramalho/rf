@@ -10,8 +10,8 @@ func contains(list []string, item string) bool {
 	return false
 }
 
-// containsAll reports whether list contains every item.
-func containsAll(list []string, items ...string) bool {
+// containsAll reports whether list contains all items.
+func containsAll(list []string, items []string) bool {
 	for _, s := range items {
 		if !contains(list, s) {
 			return false

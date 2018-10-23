@@ -19,7 +19,7 @@ func find(words ...string) {
 		if len(name) == 0 {
 			continue
 		}
-		if containsAll(strings.Fields(name), query...) {
+		if containsAll(strings.Fields(name), query) {
 			fmt.Printf("%U\t%c\t%v\n", char, char, name)
 		}
 	}
