@@ -11,20 +11,17 @@ def find(*words):
     for code in range(FIRST, LAST + 1):
         char = chr(code)
         name = unicodedata.name(char, "")
-        if not name:
-            continue
-        if query <= set(name.split()):
+        if name and query <= set(name.split()):
             print(f"U+{code:04X}\t{char}\t{name}")
             count += 1
     print(f"({count} found)")
 
 
-def main(args):
-    if len(args) < 1:
+def main(words):
+    if words:
+        find(*words)
+    else:
         print("Please provide words to find.")
-        return
-
-    find(*args)
 
 
 if __name__ == "__main__":

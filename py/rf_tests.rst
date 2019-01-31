@@ -25,9 +25,9 @@ Test ``find`` with single result::
 
 Test ``find`` with two results::
 
-    >>> find("dingbat", "zero")  # doctest:+NORMALIZE_WHITESPACE
-    U+1F10B	🄋	DINGBAT CIRCLED SANS-SERIF DIGIT ZERO
-    U+1F10C	🄌	DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ZERO
+    >>> find("chess", "queen")  # doctest:+NORMALIZE_WHITESPACE
+    U+2655	♕	WHITE CHESS QUEEN
+    U+265B	♛	BLACK CHESS QUEEN
     (2 found)
 
 Test ``main`` with no words::
@@ -38,11 +38,11 @@ Test ``main`` with no words::
 
 Test ``main`` with two words::
 
-    >>> main(['mark', 'check'])  # doctest:+NORMALIZE_WHITESPACE
-    U+237B	⍻	NOT CHECK MARK
-    U+2705	✅   WHITE HEAVY CHECK MARK
-    U+2713	✓	CHECK MARK
-    U+2714	✔	HEAVY CHECK MARK
-    U+10102	𐄂	AEGEAN CHECK MARK
-    U+1F5F8	🗸	LIGHT CHECK MARK
+    >>> main(['chess', 'black'])  # doctest:+NORMALIZE_WHITESPACE
+    U+265A	♚	BLACK CHESS KING
+    U+265B	♛	BLACK CHESS QUEEN
+    U+265C	♜	BLACK CHESS ROOK
+    U+265D	♝	BLACK CHESS BISHOP
+    U+265E	♞	BLACK CHESS KNIGHT
+    U+265F	♟	BLACK CHESS PAWN
     (6 found)
