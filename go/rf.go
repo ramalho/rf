@@ -31,9 +31,9 @@ func find(words ...string) {
 }
 
 func main() {
-	if len(os.Args) < 2 {
+	if len(os.Args) > 1 {
+		find(os.Args[1:]...)
+	} else {
 		fmt.Println("Please provide words to find.")
-		return
 	}
-	find(os.Args[1:]...)
 }

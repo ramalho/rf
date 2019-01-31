@@ -12,25 +12,25 @@ func Example_find() {
 }
 
 func Example_find_two_results() {
-	find("dingbat", "zero")
+	find("chess", "queen")
 	// Output:
-	// U+1F10B	🄋	DINGBAT CIRCLED SANS-SERIF DIGIT ZERO
-	// U+1F10C	🄌	DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ZERO
+	// U+2655	♕	WHITE CHESS QUEEN
+	// U+265B	♛	BLACK CHESS QUEEN
 	// (2 found)
 }
 
 func Example() {
 	oldArgs := os.Args
 	defer func() { os.Args = oldArgs }()
-	os.Args = []string{"<executable-name>", "mark", "check"}
+	os.Args = []string{"<executable-name>", "chess", "black"}
 	main()
 	// Output:
-	// U+237B	⍻	NOT CHECK MARK
-	// U+2705	✅	WHITE HEAVY CHECK MARK
-	// U+2713	✓	CHECK MARK
-	// U+2714	✔	HEAVY CHECK MARK
-	// U+10102	𐄂	AEGEAN CHECK MARK
-	// U+1F5F8	🗸	LIGHT CHECK MARK
+	// U+265A	♚	BLACK CHESS KING
+	// U+265B	♛	BLACK CHESS QUEEN
+	// U+265C	♜	BLACK CHESS ROOK
+	// U+265D	♝	BLACK CHESS BISHOP
+	// U+265E	♞	BLACK CHESS KNIGHT
+	// U+265F	♟	BLACK CHESS PAWN
 	// (6 found)
 }
 
