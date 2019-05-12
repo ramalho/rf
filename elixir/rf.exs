@@ -1,6 +1,8 @@
 #! /usr/bin/env elixir
 
 defmodule RuneFinder do
+  @db_path Path.join(__DIR__, "UnicodeData.txt")
+
   defp parse(line) do
     [code, name | _] = String.split(line, ";")
     {code, name, tokenize(name)}
@@ -8,7 +10,7 @@ defmodule RuneFinder do
 
   defp find(query_words) do
     count =
-      Path.join(__DIR__, "UnicodeData.txt")
+      @db_path
       |> File.stream!()
       |> Enum.reduce(0, fn line, count ->
         {code, name, name_words} = parse(line)
