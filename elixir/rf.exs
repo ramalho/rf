@@ -3,9 +3,9 @@
 defmodule RuneFinder do
   @db_path Path.join(__DIR__, "UnicodeData.txt")
 
-  defp parse(line) do
-    [code, name | _] = String.split(line, ";")
-    {code, name, tokenize(name)}
+  defp display(code, name) do
+    rune = <<String.to_integer(code, 16)::utf8>>
+    IO.puts("U+#{code}\t#{rune}\t#{name}")
   end
 
   defp find(query_words) do
@@ -13,11 +13,10 @@ defmodule RuneFinder do
       @db_path
       |> File.stream!()
       |> Enum.reduce(0, fn line, count ->
-        {code, name, name_words} = parse(line)
+        [code, name | _] = String.split(line, ";")
 
-        if MapSet.subset?(query_words, name_words) do
-          rune = <<String.to_integer(code, 16)::utf8>>
-          IO.puts("U+#{code}\t#{rune}\t#{name}")
+        if MapSet.subset?(query_words, tokenize(name)) do
+          display(code, name)
           count + 1
         else
           count
