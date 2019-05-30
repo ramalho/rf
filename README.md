@@ -2,8 +2,6 @@
 
 `rf`: utility for locating Unicode characters by name. Simplest sensible implementations in different languages.
 
-> `rf` is short for "rune finder"
-
 ## What it does
 
 Given one or more words, `rf` should return a list of all Unicode characters that have those words in their names. Only complete words should be matched, and the match is case-insenstive. For example:
