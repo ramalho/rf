@@ -2,9 +2,14 @@
 
 `rf`: utility for locating Unicode characters by name. Simplest sensible implementations in different languages.
 
-## What it does
+## About this repo
 
-Given one or more words, `rf` should return a list of all Unicode characters that have those words in their names. Only complete words should be matched, and the match is case-insenstive. For example:
+This is a collection of simple implementations of `rf` in different languages, intended as examples for people learning the languages. The description in this README.md is also suitable as a starting point for a coding dojo to implement an `rf` clone using TDD in any language.
+
+
+## What `rf` does
+
+Given one or more words, `rf` displays a list of all Unicode characters that have those words in their names. Only complete words should be matched, and the match is case-insenstive. For example:
 
 ```
 $ ./rf cat eyes
