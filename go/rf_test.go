@@ -12,26 +12,24 @@ func Example_find() {
 }
 
 func Example_find_two_results() {
-	find("chess", "queen")
+	find("hexagram", "completion")
 	// Output:
-	// U+2655	♕	WHITE CHESS QUEEN
-	// U+265B	♛	BLACK CHESS QUEEN
+	// U+4DFE	䷾	HEXAGRAM FOR AFTER COMPLETION
+    // U+4DFF	䷿	HEXAGRAM FOR BEFORE COMPLETION
 	// (2 found)
 }
 
 func Example() {
 	oldArgs := os.Args
 	defer func() { os.Args = oldArgs }()
-	os.Args = []string{"<executable-name>", "chess", "black"}
+	os.Args = []string{"<executable-name>", "great", "hexagram"}
 	main()
 	// Output:
-	// U+265A	♚	BLACK CHESS KING
-	// U+265B	♛	BLACK CHESS QUEEN
-	// U+265C	♜	BLACK CHESS ROOK
-	// U+265D	♝	BLACK CHESS BISHOP
-	// U+265E	♞	BLACK CHESS KNIGHT
-	// U+265F	♟	BLACK CHESS PAWN
-	// (6 found)
+	// U+4DCD	䷍	HEXAGRAM FOR GREAT POSSESSION
+	// U+4DD9	䷙	HEXAGRAM FOR GREAT TAMING
+	// U+4DDB	䷛	HEXAGRAM FOR GREAT PREPONDERANCE
+	// U+4DE1	䷡	HEXAGRAM FOR GREAT POWER
+	// (4 found)
 }
 
 func Example_no_args() {
