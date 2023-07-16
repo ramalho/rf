@@ -22,14 +22,15 @@ func Example_find_two_results() {
 func Example() {
 	oldArgs := os.Args
 	defer func() { os.Args = oldArgs }()
-	os.Args = []string{"<executable-name>", "great", "hexagram"}
+	os.Args = []string{"<executable-name>", "apl", "tilde"}
 	main()
 	// Output:
-	// U+4DCD	䷍	HEXAGRAM FOR GREAT POSSESSION
-	// U+4DD9	䷙	HEXAGRAM FOR GREAT TAMING
-	// U+4DDB	䷛	HEXAGRAM FOR GREAT PREPONDERANCE
-	// U+4DE1	䷡	HEXAGRAM FOR GREAT POWER
-	// (4 found)
+	// U+2368	⍨	APL FUNCTIONAL SYMBOL TILDE DIAERESIS
+	// U+236B	⍫	APL FUNCTIONAL SYMBOL DEL TILDE
+	// U+236D	⍭	APL FUNCTIONAL SYMBOL STILE TILDE
+	// U+2371	⍱	APL FUNCTIONAL SYMBOL DOWN CARET TILDE
+	// U+2372	⍲	APL FUNCTIONAL SYMBOL UP CARET TILDE
+	// (5 found)
 }
 
 func Example_no_args() {
