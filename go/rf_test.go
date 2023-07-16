@@ -5,9 +5,9 @@ import (
 )
 
 func Example_find() {
-	find("sign", "registered")
+	find("cruzeiro")
 	// Output:
-	// U+00AE	®	REGISTERED SIGN
+	// U+20A2	₢	CRUZEIRO SIGN
 	// (1 found)
 }
 
@@ -15,7 +15,7 @@ func Example_find_two_results() {
 	find("hexagram", "completion")
 	// Output:
 	// U+4DFE	䷾	HEXAGRAM FOR AFTER COMPLETION
-    // U+4DFF	䷿	HEXAGRAM FOR BEFORE COMPLETION
+	// U+4DFF	䷿	HEXAGRAM FOR BEFORE COMPLETION
 	// (2 found)
 }
 
