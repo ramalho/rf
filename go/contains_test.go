@@ -26,6 +26,28 @@ func TestContains(t *testing.T) {
 	}
 }
 
+func TestContainsInt(t *testing.T) {
+	testCases := []struct {
+		list []int
+		item int
+		want bool
+		name string
+	}{
+		{[]int{}, 3, false, "empty list"},
+		{[]int{3}, 4, false, "not found"},
+		{[]int{3}, 3, true, "found"},
+		{[]int{3, 4}, 4, true, "found last"},
+	}
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			got := contains(tc.list, tc.item)
+			if got != tc.want {
+				t.Errorf("got %v; want %v", got, tc.want)
+			}
+		})
+	}
+}
+
 func TestContainsAll(t *testing.T) {
 	testCases := []struct {
 		list  []string

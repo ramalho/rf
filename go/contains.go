@@ -1,7 +1,7 @@
 package main
 
 // contains reports whether list contains item.
-func contains(list []string, item string) bool {
+func contains[K comparable](list []K, item K) bool {
 	for _, s := range list {
 		if s == item {
 			return true
@@ -11,7 +11,7 @@ func contains(list []string, item string) bool {
 }
 
 // containsAll reports whether list contains all items.
-func containsAll(list []string, items []string) bool {
+func containsAll[K comparable](list []K, items []K) bool {
 	for _, s := range items {
 		if !contains(list, s) {
 			return false
