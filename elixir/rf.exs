@@ -7,16 +7,11 @@ defmodule RuneFinder do
   end
 
   defp select(line_stream, query_words) do
-    Enum.reduce(line_stream, 0, fn line, count ->
+    Enum.count(line_stream, fn line ->
       [code, name | _] = String.split(line, ";")
 
-      if MapSet.subset?(query_words, tokenize(name)) do
-        display(code, name)
-        count + 1
-      else
-        count
-      end
-    end)
+      MapSet.subset?(query_words, tokenize(name)) and display(code, name) 
+    end) 
   end
 
   defp summary(count), do: IO.puts("(#{count} found)")
