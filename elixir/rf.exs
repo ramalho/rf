@@ -9,8 +9,7 @@ defmodule RuneFinder do
   defp select(line_stream, query_words) do
     Enum.count(line_stream, fn line ->
       [code, name | _] = String.split(line, ";")
-
-      MapSet.subset?(query_words, tokenize(name)) and display(code, name) 
+      if MapSet.subset?(query_words, tokenize(name)), do: display(code, name)
     end) 
   end
 
