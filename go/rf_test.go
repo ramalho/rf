@@ -12,11 +12,18 @@ func Example_find() {
 }
 
 func Example_find_two_results() {
-	find("hexagram", "completion")
+	find("completion hexagram")
 	// Output:
 	// U+4DFE	䷾	HEXAGRAM FOR AFTER COMPLETION
 	// U+4DFF	䷿	HEXAGRAM FOR BEFORE COMPLETION
 	// (2 found)
+}
+
+func Example_find_hyphenated_name() {
+	find("hyphen", ' ', '\x80')
+	// Output:
+	// U+002D	-	HYPHEN-MINUS
+	// (1 found)
 }
 
 func Example() {
