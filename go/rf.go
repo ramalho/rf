@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"slices"
 	"strings"
 	"unicode"
 
@@ -13,6 +14,16 @@ const default_first, default_last = ' ', unicode.MaxRune
 
 func tokenize(text string) []string {
 	return strings.Fields(strings.ReplaceAll(text, "-", " "))
+}
+
+// containsAll reports whether list contains all items.
+func containsAll(list []string, items []string) bool {
+	for _, s := range items {
+		if !slices.Contains(list, s) {
+			return false
+		}
+	}
+	return true
 }
 
 func find(text string, firstLast ...rune) {
@@ -50,6 +61,7 @@ func main() {
 	if len(os.Args) > 1 {
 		find(strings.Join(os.Args[1:], " "))
 	} else {
-		fmt.Println("Please provide words to find.")
+		fmt.Println("Please provide words to find. Example:")
+		fmt.Println("  " + os.Args[0] + " cat eyes")
 	}
 }
