@@ -48,7 +48,7 @@ func Example_no_args() {
 	main()
 	// Output:
 	// Please provide words to find. Example:
-	//   <executable-name> cat eyes
+	//  <executable-name> cat eyes
 }
 
 func TestContainsAll(t *testing.T) {
