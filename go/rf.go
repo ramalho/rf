@@ -61,7 +61,7 @@ func main() {
 	if len(os.Args) > 1 {
 		find(strings.Join(os.Args[1:], " "))
 	} else {
-		fmt.Print("Please provide words to find.\nExample:\n")
+		fmt.Println("Please provide words to find.\nExample:")
 		fmt.Println(os.Args[0], "cat eyes")
 	}
 }
