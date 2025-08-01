@@ -4,7 +4,10 @@
 
 ## About this repo
 
-This is a collection of simple implementations of `rf` in different languages, intended as examples for people learning the languages. The description in this README.md is also suitable as a starting point for a coding dojo to implement an `rf` clone using TDD in any language.
+This is a collection of simple implementations of `rf` in different languages,
+intended as examples for people studying the languages.
+The description in this README.md is a good starting point for a coding dojo
+to implement an `rf` clone using TDD in any language.
 
 
 ## What `rf` does
@@ -21,7 +24,7 @@ U+1F63D	😽	KISSING CAT FACE WITH CLOSED EYES
 
 ## Where to get the data
 
-The standard names of Unicode characters can be found in the [UnicodeData.txt](http://www.unicode.org/Public/UNIDATA/UnicodeData.txt) text file (32K lines, 1.7 Mb).
+The standard names of Unicode characters can be found in the [UnicodeData.txt](http://www.unicode.org/Public/UNIDATA/UnicodeData.txt) text file (about 34K lines, 1.8 Mb and growing).
 
 Some programming languages provide standard packages with that information. For example, in Python, there is the [unicodedata](https://docs.python.org/3/library/unicodedata.html) package, and Go has the semi-official [runenames](https://godoc.org/golang.org/x/text/unicode/runenames) package.
 
