@@ -1,15 +1,16 @@
 #! /usr/bin/env elixir
 
 defmodule RuneFinder do
-  defp display(code, name) do
-    rune = <<String.to_integer(code, 16)::utf8>>
-    IO.puts("U+#{code}\t#{rune}\t#{name}")
+  defp display(code_str, name) do
+    code = String.to_integer(code_str, 16)
+    char = List.to_string([code])
+    IO.puts("U+#{code_str}\t#{char}\t#{name}")
   end
 
-  defp select(line_stream, query_words) do
-    Enum.count(line_stream, fn line ->
-      [code, name | _] = String.split(line, ";")
-      if MapSet.subset?(query_words, tokenize(name)), do: display(code, name)
+  defp select(lines, query_words) do
+    Enum.count(lines, fn line ->
+      [code_str, name | _] = String.split(line, ";")
+      if MapSet.subset?(query_words, tokenize(name)), do: display(code_str, name)
     end) 
   end
 
