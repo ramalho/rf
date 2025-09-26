@@ -91,7 +91,11 @@ func main() {
 			find(text)
 		}
 	} else {
-		fmt.Println("Please provide words to find.\nExample:")
+		fmt.Println("Please give words to find or characters to get their names.")
+		fmt.Print("Example:\n\t")
 		fmt.Println(os.Args[0], "cat eyes")
+		fmt.Println("Use . or special characters in arguments to force character mode.")
+		fmt.Print("Example:\n\t")
+		fmt.Println(os.Args[0], ". 👋")
 	}
 }

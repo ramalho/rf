@@ -47,9 +47,12 @@ func Example_no_args() {
 	os.Args = []string{"<executable-name>"}
 	main()
 	// Output:
-	// Please provide words to find.
+	// Please give words to find or characters to get their names.
 	// Example:
-	// <executable-name> cat eyes
+	// 	<executable-name> cat eyes
+	// Use . or special characters in arguments to force character mode.
+	// Example:
+	// 	<executable-name> . 👋
 }
 
 func Example_listChars_liberation() {
