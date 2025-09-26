@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"regexp"
 	"slices"
 	"strings"
 	"unicode"
@@ -24,6 +25,30 @@ func containsAll(list []string, items []string) bool {
 		}
 	}
 	return true
+}
+
+// hasSpecialChar reports whether the text contains any character that is not
+// A-Z, a-z, 0-9, space, or hyphen.
+func hasSpecialChar(text string) bool {
+	// Regex that matches only allowed characters: A-Z, a-z, 0-9, space, hyphen
+	allowedPattern := regexp.MustCompile(`^[A-Za-z0-9 -]*$`)
+	return !allowedPattern.MatchString(text)
+}
+
+// listChars lists each character in the text using the same format as search output.
+func listChars(text string) {
+	count := 0
+	for _, char := range text {
+		name := runenames.Name(char)
+		if len(name) == 0 {
+			// For characters without official Unicode names, show a placeholder
+			fmt.Printf("%U\t%c\t<no name>\n", char, char)
+		} else {
+			fmt.Printf("%U\t%c\t%v\n", char, char, name)
+		}
+		count++
+	}
+	fmt.Printf("(%d found)\n", count)
 }
 
 func find(text string, firstLast ...rune) {
@@ -59,7 +84,12 @@ func find(text string, firstLast ...rune) {
 
 func main() {
 	if len(os.Args) > 1 {
-		find(strings.Join(os.Args[1:], " "))
+		text := strings.Join(os.Args[1:], " ")
+		if hasSpecialChar(text) {
+			listChars(text)
+		} else {
+			find(text)
+		}
 	} else {
 		fmt.Println("Please provide words to find.\nExample:")
 		fmt.Println(os.Args[0], "cat eyes")
