@@ -27,13 +27,15 @@ func containsAll(list []string, items []string) bool {
 	return true
 }
 
-// hasSpecialChar reports whether the text contains
-// any character not used in Unicode character names.
-func hasSpecialChar(text string) bool {
-	// Regex that matches characters used in Unicode names:
- // A-Z, a-z, 0-9, space, hyphen
-	nameRe := regexp.MustCompile(`^[A-Za-z0-9 -]*$`)
-	return !nameRe.MatchString(text)
+// Regex that matches characters used in Unicode names:
+// A-Z, 0-9, space, hyphen
+var unicodeNameRe = regexp.MustCompile(`(?i)^[A-Z0-9 -]*$`)
+
+// likeUnicodeName reports whether the text contains
+// only character used in Unicode character names.
+func likeUnicodeName(text string) bool {
+
+	return nameRe.MatchString(text)
 }
 
 // listChars lists each character in the text
@@ -80,10 +82,10 @@ func find(text string, firstLast ...rune) {
 func main() {
 	if len(os.Args) > 1 {
 		text := strings.Join(os.Args[1:], " ")
-		if hasSpecialChar(text) {
-			listChars(text)
-		} else {
+		if likeUnicodeName(text) {
 			find(text)
+		} else {
+			listChars(text)
 		}
 	} else {
 		fmt.Println("Please give words to find or characters to get their names.")
