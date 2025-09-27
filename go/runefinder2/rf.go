@@ -27,15 +27,15 @@ func containsAll(list []string, items []string) bool {
 	return true
 }
 
-// Regex that matches characters used in Unicode names:
-// A-Z, 0-9, space, hyphen
-var unicodeNameRe = regexp.MustCompile(`(?i)^[A-Z0-9 -]*$`)
+// Regex to match characters used in Unicode names:
+// case-insensitive A-Z, 0-9, space, hyphen
+var unicodeNameRe = regexp.MustCompile(`(?i)^[A-Z0-9 -]+$`)
 
 // likeUnicodeName reports whether the text contains
-// only character used in Unicode character names.
+// only characters used in Unicode character names.
 func likeUnicodeName(text string) bool {
 
-	return nameRe.MatchString(text)
+	return unicodeNameRe.MatchString(text)
 }
 
 // listChars lists each character in the text
