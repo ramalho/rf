@@ -27,35 +27,30 @@ func containsAll(list []string, items []string) bool {
 	return true
 }
 
-// hasSpecialChar reports whether the text contains any character that is not
-// A-Z, a-z, 0-9, space, or hyphen.
+// hasSpecialChar reports whether the text contains
+// any character not used in Unicode character names.
 func hasSpecialChar(text string) bool {
-	// Regex that matches only allowed characters: A-Z, a-z, 0-9, space, hyphen
-	allowedPattern := regexp.MustCompile(`^[A-Za-z0-9 -]*$`)
-	return !allowedPattern.MatchString(text)
+	// Regex that matches characters used in Unicode names:
+ // A-Z, a-z, 0-9, space, hyphen
+	nameRe := regexp.MustCompile(`^[A-Za-z0-9 -]*$`)
+	return !nameRe.MatchString(text)
 }
 
-// listChars lists each character in the text using the same format as search output.
+// listChars lists each character in the text
+// using the same format as find output.
 func listChars(text string) {
-	count := 0
-	for _, char := range text {
+	for i, char := range text {
 		name := runenames.Name(char)
-		if len(name) == 0 {
-			// For characters without official Unicode names, show a placeholder
-			fmt.Printf("%U\t%c\t<no name>\n", char, char)
-		} else {
-			fmt.Printf("%U\t%c\t%v\n", char, char, name)
-		}
-		count++
+  fmt.Printf("%U\t%c\t%v\n", char, char, name)
 	}
-	fmt.Printf("(%d found)\n", count)
+	fmt.Printf("(%d characters)\n", i + 1)
 }
 
 func find(text string, firstLast ...rune) {
 	first, last := default_first, default_last
 	switch len(firstLast) {
 	case 0:
-		// done
+		// use default values
 	case 1:
 		first = firstLast[0]
 	case 2:
