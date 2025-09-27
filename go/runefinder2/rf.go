@@ -87,9 +87,10 @@ func main() {
 		}
 	} else {
 		fmt.Println("Please give words to find or characters to get their names.")
+		fmt.Println("To search by name, use only ASCII letters, digits, hyphen and space.")
 		fmt.Print("Example:\n\t")
 		fmt.Println(os.Args[0], "cat eyes")
-		fmt.Println("Use . or special characters in arguments to force character mode.")
+		fmt.Println("Use . or other characters in arguments list their names.")
 		fmt.Print("Example:\n\t")
 		fmt.Println(os.Args[0], ". 👋")
 	}

@@ -48,9 +48,10 @@ func Example_no_args() {
 	main()
 	// Output:
 	// Please give words to find or characters to get their names.
+	// To search by name, use only ASCII letters, digits, hyphen and space.
 	// Example:
 	// 	<executable-name> cat eyes
-	// Use . or special characters in arguments to force character mode.
+	// Use . or other characters in arguments list their names.
 	// Example:
 	// 	<executable-name> . 👋
 }
