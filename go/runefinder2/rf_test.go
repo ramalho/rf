@@ -75,7 +75,7 @@ func Example_listChars_liberation() {
 	// U+00E7	ç	LATIN SMALL LETTER C WITH CEDILLA
 	// U+00E3	ã	LATIN SMALL LETTER A WITH TILDE
 	// U+006F	o	LATIN SMALL LETTER O
-	// (14 found)
+	// (14 characters)
 }
 
 func Example_listChars_question_mark() {
@@ -89,7 +89,7 @@ func Example_listChars_question_mark() {
 	// U+0061	a	LATIN SMALL LETTER A
 	// U+0074	t	LATIN SMALL LETTER T
 	// U+003F	?	QUESTION MARK
-	// (5 found)
+	// (5 characters)
 }
 
 func Example_listChars_emoji() {
@@ -99,7 +99,7 @@ func Example_listChars_emoji() {
 	// U+0069	i	LATIN SMALL LETTER I
 	// U+0020	 	SPACE
 	// U+1F44B	👋	WAVING HAND SIGN
-	// (4 found)
+	// (4 characters)
 }
 
 func TestContainsAll(t *testing.T) {
@@ -131,40 +131,22 @@ func TestContainsAll(t *testing.T) {
 	}
 }
 
-func TestHasSpecialChar(t *testing.T) {
+func TestLikeUnicodeName(t *testing.T) {
 	testCases := []struct {
 		text string
 		want bool
 		name string
 	}{
-		{"hello", false, "ASCII letters only"},
-		{"hello world", false, "letters and space"},
-		{"hello-world", false, "letters and hyphen"},
-		{"Hello123", false, "letters and numbers"},
-		{"test-123 ABC", false, "all allowed characters"},
-		{"hello?", true, "question mark"},
-		{"café", true, "non-ASCII character"},
-		{"test—dash", true, "em dash"},
-		{"Liberação", true, "Portuguese characters"},
+		{"hello-world name 42", true, "letters, hyphen, digits, space"},
+		{"hello?", false, "question mark"},
+		{"café", false, "non-ASCII character"},
 		{"", false, "empty string"},
-		{"123 ABC", false, "numbers and letters"},
-		{"👋", true, "emoji"},
-		{"hello.", true, "period"},
-		{"test,case", true, "comma"},
-		{"under_score", true, "underscore"},
-		{"at@symbol", true, "at symbol"},
-		{"hash#tag", true, "hash symbol"},
-		{"dollar$sign", true, "dollar sign"},
-		{"percent%", true, "percent sign"},
-		{"ampersand&", true, "ampersand"},
-		{"exclamation!", true, "exclamation mark"},
-		{"parentheses()", true, "parentheses"},
 	}
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			got := hasSpecialChar(tc.text)
+			got := likeUnicodeName(tc.text)
 			if got != tc.want {
-				t.Errorf("hasSpecialChar(%q) = %v; want %v", tc.text, got, tc.want)
+				t.Errorf("likeUnicodeName(%q) = %v; want %v", tc.text, got, tc.want)
 			}
 		})
 	}

@@ -34,18 +34,19 @@ var unicodeNameRe = regexp.MustCompile(`(?i)^[A-Z0-9 -]+$`)
 // likeUnicodeName reports whether the text contains
 // only characters used in Unicode character names.
 func likeUnicodeName(text string) bool {
-
 	return unicodeNameRe.MatchString(text)
 }
 
 // listChars lists each character in the text
 // using the same format as find output.
 func listChars(text string) {
-	for i, char := range text {
+	count := 0
+	for _, char := range text {
 		name := runenames.Name(char)
-  fmt.Printf("%U\t%c\t%v\n", char, char, name)
+		fmt.Printf("%U\t%c\t%v\n", char, char, name)
+		count++
 	}
-	fmt.Printf("(%d characters)\n", i + 1)
+	fmt.Printf("(%d characters)\n", count)
 }
 
 func find(text string, firstLast ...rune) {
