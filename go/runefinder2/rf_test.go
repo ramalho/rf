@@ -75,7 +75,7 @@ func Example_listChars_liberation() {
 	// U+00E7	ç	LATIN SMALL LETTER C WITH CEDILLA
 	// U+00E3	ã	LATIN SMALL LETTER A WITH TILDE
 	// U+006F	o	LATIN SMALL LETTER O
-	// (14 characters)
+	// (14 found)
 }
 
 func Example_listChars_question_mark() {
@@ -89,7 +89,7 @@ func Example_listChars_question_mark() {
 	// U+0061	a	LATIN SMALL LETTER A
 	// U+0074	t	LATIN SMALL LETTER T
 	// U+003F	?	QUESTION MARK
-	// (5 characters)
+	// (5 found)
 }
 
 func Example_listChars_emoji() {
@@ -99,7 +99,7 @@ func Example_listChars_emoji() {
 	// U+0069	i	LATIN SMALL LETTER I
 	// U+0020	 	SPACE
 	// U+1F44B	👋	WAVING HAND SIGN
-	// (4 characters)
+	// (4 found)
 }
 
 func TestContainsAll(t *testing.T) {

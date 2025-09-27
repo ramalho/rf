@@ -45,7 +45,7 @@ func listChars(text string) {
 		fmt.Printf("%U\t%c\t%v\n", char, char, name)
 		count++
 	}
-	fmt.Printf("(%d characters)\n", count)
+	fmt.Printf("(%d found)\n", count)
 }
 
 // find lists runes whose Unicode names have all words from
