@@ -37,8 +37,7 @@ func likeUnicodeName(text string) bool {
 	return unicodeNameRe.MatchString(text)
 }
 
-// listChars lists each character in the text
-// using the same format as find output.
+// listChars lists each rune in the text.
 func listChars(text string) {
 	count := 0
 	for _, char := range text {
@@ -49,6 +48,8 @@ func listChars(text string) {
 	fmt.Printf("(%d characters)\n", count)
 }
 
+// find lists runes whose Unicode names have all words from
+// given text, searching within optional firstLast rune range.
 func find(text string, firstLast ...rune) {
 	first, last := default_first, default_last
 	switch len(firstLast) {
@@ -61,16 +62,12 @@ func find(text string, firstLast ...rune) {
 	default:
 		panic("find: firstLast must be 0, 1 or 2 runes")
 	}
-	words := tokenize(text)
-	query := []string{}
-	for _, word := range words {
-		query = append(query, strings.ToUpper(word))
-	}
+	query := tokenize(strings.ToUpper(text))
 	count := 0
 	for char := first; char <= last; char++ {
 		name := runenames.Name(char)
 		if len(name) == 0 {
-			continue
+			name = "NAMELESS"
 		}
 		if containsAll(tokenize(name), query) {
 			fmt.Printf("%U\t%c\t%v\n", char, char, name)
