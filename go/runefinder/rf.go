@@ -25,18 +25,11 @@ func containsAll(list []string, items []string) bool {
 }
 
 func find(text string, first rune, last rune) {
-	words := tokenize(text)
-	query := []string{}
-	for _, word := range words {
-		query = append(query, strings.ToUpper(word))
-	}
+	query := tokenize(strings.ToUpper(text))
 	count := 0
 	for char := first; char <= last; char++ {
 		name := runenames.Name(char)
-		if len(name) == 0 {
-			continue
-		}
-		if containsAll(tokenize(name), query) {
+		if len(name) > 0 && containsAll(tokenize(name), query) {
 			fmt.Printf("%U\t%c\t%v\n", char, char, name)
 			count++
 		}

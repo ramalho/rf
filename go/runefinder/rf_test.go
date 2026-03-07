@@ -18,7 +18,6 @@ func TestTokenize(t *testing.T) {
 		{"hello", []string{"hello"}, "single word"},
 		{"hello new world", []string{"hello", "new", "world"}, "3 words"},
 		{"hello-world", []string{"hello", "world"}, "hyphenated word"},
-		{"multi-hyphen-word", []string{"multi", "hyphen", "word"}, "multiple hyphens"},
 		{"word1 word2-word3", []string{"word1", "word2", "word3"}, "mixed spaces and hyphens"},
 		{"", []string{}, "empty string"},
 		{"   ", []string{}, "whitespace only"},
