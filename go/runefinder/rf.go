@@ -10,8 +10,6 @@ import (
 	"golang.org/x/text/unicode/runenames"
 )
 
-const default_first, default_last = ' ', unicode.MaxRune
-
 func tokenize(text string) []string {
 	return strings.Fields(strings.ReplaceAll(text, "-", " "))
 }
@@ -26,18 +24,7 @@ func containsAll(list []string, items []string) bool {
 	return true
 }
 
-func find(text string, firstLast ...rune) {
-	first, last := default_first, default_last
-	switch len(firstLast) {
-	case 0:
-		// done
-	case 1:
-		first = firstLast[0]
-	case 2:
-		first, last = firstLast[0], firstLast[1]
-	default:
-		panic("find: firstLast must be 0, 1 or 2 runes")
-	}
+func find(text string, first rune, last rune) {
 	words := tokenize(text)
 	query := []string{}
 	for _, word := range words {
@@ -59,7 +46,7 @@ func find(text string, firstLast ...rune) {
 
 func main() {
 	if len(os.Args) > 1 {
-		find(strings.Join(os.Args[1:], " "))
+		find(strings.Join(os.Args[1:], " "), ' ', unicode.MaxRune)
 	} else {
 		fmt.Println("Please provide words to find.\nExample:")
 		fmt.Println(os.Args[0], "cat eyes")

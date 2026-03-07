@@ -3,17 +3,20 @@ package main
 import (
 	"os"
 	"testing"
+	"unicode"
 )
 
+const first, last = ' ', unicode.MaxRune
+
 func Example_find() {
-	find("cruzeiro")
+	find("cruzeiro", first, last)
 	// Output:
 	// U+20A2	₢	CRUZEIRO SIGN
 	// (1 found)
 }
 
 func Example_find_two_results() {
-	find("completion hexagram")
+	find("completion hexagram", first, last)
 	// Output:
 	// U+4DFE	䷾	HEXAGRAM FOR AFTER COMPLETION
 	// U+4DFF	䷿	HEXAGRAM FOR BEFORE COMPLETION
